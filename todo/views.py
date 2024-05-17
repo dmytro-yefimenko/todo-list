@@ -16,7 +16,11 @@ def index(request) -> HttpResponse:
         "tasks_list": tasks_list
     }
 
-    return render(request, template_name="todo/index.html", context=context)
+    return render(
+        request,
+        template_name="todo/index.html",
+        context=context
+    )
 
 
 class TaskCreateView(generic.CreateView):
