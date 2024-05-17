@@ -26,6 +26,27 @@ class TaskCreateView(generic.CreateView):
     success_url = reverse_lazy("todo:index")
 
 
+class TaskStatusUpdateView(generic.View):
+    model = Task
 
+    def post(self, request, pk) -> HttpResponseRedirect:
+        task = get_object_or_404(Task, pk=pk)
+        task.is_done = not task.is_done
+        task.save()
+
+        return HttpResponseRedirect(reverse("todo:index"))
+
+
+class TaskUpdateView(generic.UpdateView):
+    model = Task
+    form_class = TaskForm
+    template_name = "todo/task_form.html"
+    success_url = reverse_lazy("todo:index")
+
+
+class TaskDeleteView(generic.DeleteView):
+    model = Task
+    template_name = "todo/task_confirm_delete_form.html"
+    success_url = reverse_lazy("todo:index")
 
 
