@@ -20,7 +20,7 @@
     {% for task in tasks_list %}
       <ul>
         <li>
-          <h4>
+          <h5>
             <strong>
               {{ task }}
               {% if task.is_done %}
@@ -38,20 +38,21 @@
 
               </form>
             </strong>
-          </h4>
+          </h5>
 
           <p>Created: {{ task.created }}
-            <span class="task-deadline">{% if task.deadline %}Deadline: {{ task.deadline }}{% endif %}</span></p>
+            <span class="task-deadline">{% if task.deadline %}<strong>Deadline: {{ task.deadline }}</strong>{% endif %}</span></p>
           <p>
             <strong>Tags:</strong>
             {% for tag in task.tags.all %}
-              <span class="tags">{{ tag }}</span>
+              <span class="tags">#{{ tag }}</span>
             {% endfor %}
             &nbsp; – &nbsp;
             <a href="{% url 'todo:task-update' task.pk %}">Update</a>
             /
             <a href="{% url 'todo:task-delete' task.pk %}">Delete</a>
           </p>
+        <hr>
         </li>
       </ul>
     {% endfor %}
