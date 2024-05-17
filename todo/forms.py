@@ -11,7 +11,7 @@ class TaskForm(forms.ModelForm):
                 "type": "datetime-local"
             }
         ),
-        required=True
+        required=False
     )
     tags = forms.ModelMultipleChoiceField(
         queryset=Tag.objects.all(),

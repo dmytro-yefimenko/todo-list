@@ -1,0 +1,16 @@
+.status-done {
+    color: green;
+}
+
+.status-not-done {
+    color: red;
+}
+
+.task-deadline {
+    color: darkred;
+}
+
+.tags {
+    color: gray;
+    font-weight: bold;
+}
